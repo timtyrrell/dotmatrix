@@ -33,8 +33,10 @@ zstyle ':completion:*' cache-path ~/.zshcache
 # make with the pretty colors
 autoload colors; colors
 
-# just say no to zle vim mode:
-bindkey -e
+#vim binding
+bindkey -v
+bindkey -M vicmd '^r' history-incremental-search-backward
+bindkey -M viins '^r' history-incremental-search-backward
 
 # options
 setopt appendhistory extendedglob histignoredups nonomatch prompt_subst interactivecomments
@@ -98,6 +100,7 @@ alias la="ls -a"
 alias l.='ls -ld .[^.]*'
 alias lsd='ls -ld *(-/DN)'
 alias md='mkdir -p'
+alias vim='mvim -v'
 alias rd='rmdir'
 alias cd..='cd ..'
 alias ..='cd ..'
