@@ -53,3 +53,5 @@ bling/vim-airline
 chaoren/vim-wordmotion
 Rykka/lastbuf.vim
 Raimondi/delimitMate
+SirVer/ultisnips
+Valloric/YouCompleteMe
