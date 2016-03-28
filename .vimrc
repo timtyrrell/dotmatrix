@@ -145,6 +145,8 @@ function! QuickfixFilenames()
   return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
 
+autocmd BufNewFile,BufRead *.scss             set ft=scss.css
+
 augroup vimrc
   autocmd!
   autocmd GuiEnter * set columns=120 lines=70 number
