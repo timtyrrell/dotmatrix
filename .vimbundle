@@ -10,7 +10,6 @@ jgdavey/vim-railscasts
 jgdavey/vim-turbux
 jgdavey/vim-weefactor
 leshill/vim-json
-mileszs/ack.vim
 pangloss/vim-javascript
 rondale-sc/vim-spacejam
 therubymug/vim-pyte
@@ -21,6 +20,7 @@ tpope/vim-endwise
 tpope/vim-eunuch
 tpope/vim-fugitive
 tpope/vim-git
+tpope/vim-haml
 tpope/vim-markdown
 tpope/vim-pathogen
 tpope/vim-projectionist
