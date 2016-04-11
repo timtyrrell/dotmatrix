@@ -47,3 +47,5 @@
 	path = ~/.gitconfig.local
 [fetch]
 	prune = true
+[user]
+	useconfigonly = true

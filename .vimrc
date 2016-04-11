@@ -121,6 +121,9 @@ map fg <c-z>
 nmap <CR> :write!<CR>
 cabbrev w nope
 
+" jsx syntax
+let g:jsx_ext_required = 0
+
 " YouCompleteMe, endwise, ultisnips config
 let g:endwise_no_mappings = 1
 let g:UltiSnipsExpandTrigger = "<nop>"
