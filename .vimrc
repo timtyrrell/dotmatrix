@@ -67,7 +67,7 @@ map <Leader><space> :nohl<cr>
 nnoremap <leader><bs> :Ag! '\b<c-r><c-w>\b'<cr>
 
 " NERDTree configuration
-let NERDTreeIgnore=['\~$', 'tmp', '\.git', '\.bundle', '.DS_Store', 'tags', '.swp']
+let NERDTreeIgnore=['\~$', 'tmp', '\.git$', '\.bundle', '.DS_Store', 'tags', '.swp']
 let NERDTreeShowHidden=1
 let g:NERDTreeDirArrows=0
 map <Leader>n :NERDTreeToggle<CR>
