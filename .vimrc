@@ -130,6 +130,12 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsListSnippets="<c-l>"
 
+" vim-jsx-utils
+nnoremap <leader>ja :call JSXEncloseReturn()<CR>
+nnoremap <leader>ji :call JSXEachAttributeInLine()<CR>
+nnoremap <leader>je :call JSXExtractPartialPrompt()<CR>
+nnoremap <leader>jc :call JSXChangeTagPrompt()<CR>
+nnoremap vat :call JSXSelectTag()<CR>
 
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
 function! QuickfixFilenames()
