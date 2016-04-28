@@ -2,6 +2,7 @@ fpath=(
   $fpath
   ~/.rvm/scripts/zsh/Completion
   ~/.zsh/functions
+  ~/.zsh/completion
   /usr/local/share/zsh/site-functions
 )
 
