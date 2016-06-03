@@ -47,7 +47,7 @@ christoomey/vim-tmux-navigator
 scrooloose/syntastic
 vim-scripts/IndexedSearch
 goldfeld/vim-seek
-kien/ctrlp.vim
+ctrlpvim/ctrlp.vim
 scrooloose/nerdtree
 rking/ag.vim
 bling/vim-airline
