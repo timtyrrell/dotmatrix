@@ -86,6 +86,7 @@ colorscheme Tomorrow-Night-Eighties
 
 " ctrlp.vim config
 if get(g:, 'loaded_ctrlp', 1)
+  let g:ctrlp_by_filename = 1
   let g:ctrlp_match_window_reversed = 0
   let g:ctrlp_working_path_mode = 'a'
   let g:ctrlp_max_height = 20
