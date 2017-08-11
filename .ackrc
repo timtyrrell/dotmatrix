@@ -8,3 +8,8 @@
 --ignore-dir=log
 --ignore-dir=tags
 --ignore-dir=tmp
+--ignore-dir=flow-typed
+--ignore-dir=node_modules
+--ignore-dir=.happypack
+--ignore-dir=sample-js
+--ignore-dir=lib

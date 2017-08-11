@@ -126,7 +126,7 @@ debugger
 endsnippet
 
 snippet ca "console.assert" b
-console.assert(${1:assertion}, ${2:"${3:message}"})
+console.assert(${1:assertion}, ${2:'${3:message}'})
 endsnippet
 
 snippet cclear "console.clear" b
@@ -142,51 +142,51 @@ console.dirxml(${1:object})
 endsnippet
 
 snippet ce "console.error" b
-console.error(${1:"${2:value}"})
+console.error(${1:'${2:value}'})
 endsnippet
 
 snippet cgroup "console.group" b
-console.group("${1:label}")
+console.group('${1:label}')
 ${VISUAL}$0
 console.groupEnd()
 endsnippet
 
 snippet cgroupc "console.groupCollapsed" b
-console.groupCollapsed("${1:label}")
+console.groupCollapsed('${1:label}')
 ${VISUAL}$0
 console.groupEnd()
 endsnippet
 
 snippet ci "console.info" b
-console.info(${1:"${2:value}"})
+console.info(${1:'${2:value}'})
 endsnippet
 
 snippet cl "console.log" b
-console.log(${1:"${2:value}"})
+console.log(${1:'${2:value}'})
 endsnippet
 
 snippet cd "console.debug" b
-console.debug(${1:"${2:value}"})
+console.debug(${1:'${2:value}'})
 endsnippet
 
 snippet cprof "console.profile" b
-console.profile("${1:label}")
+console.profile('${1:label}')
 ${VISUAL}$0
 console.profileEnd()
 endsnippet
 
 snippet ctable "console.table" b
-console.table(${1:"${2:value}"})
+console.table(${1:'${2:value}'})
 endsnippet
 
 snippet ctime "console.time" b
-console.time("${1:label}")
+console.time('${1:label}')
 ${VISUAL}$0
 console.timeEnd("$1")
 endsnippet
 
 snippet ctimestamp "console.timeStamp" b
-console.timeStamp("${1:label}")
+console.timeStamp('${1:label}')
 endsnippet
 
 snippet ctrace "console.trace" b
@@ -194,7 +194,7 @@ console.trace()
 endsnippet
 
 snippet cw "console.warn" b
-console.warn(${1:"${2:value}"})
+console.warn(${1:'${2:value}'})
 endsnippet
 
 # html (JSX)
@@ -324,6 +324,13 @@ snippet ed
 export default ${0}
 endsnippet
 
+
+snippet =>
+(${1}) => {
+  ${0}
+}
+endsnippet
+
 ### React snippets ###
 snippet rt "create React component using file Template" b
 import React, {Component, PropTypes } from 'react'
@@ -431,7 +438,6 @@ componentWillUnmount() {
 }$0
 endsnippet
 
-
 snippet pt "propTypes" b
 ${1}.propTypes = {
 	${2}: PropTypes.${3:string},
@@ -457,5 +463,7 @@ this.setState({
 	${1}: ${2}
 });$0
 endsnippet
+
+# mocha
 
 # vim:ft=snippets:

@@ -20,9 +20,15 @@ set hidden
 
 set guifont=Anonymous\ Pro\ for\ Powerline:h12
 set guioptions-=T guioptions-=e guioptions-=L guioptions-=r
-set shell=bash
+set shell=/bin/bash
 
 :nmap , \
+
+" yank until end of line
+nnoremap Y y$
+
+" don't overwrite bugger on paste
+xnoremap p "_dP
 
 " simplify split navigation
 map <C-j> <C-W>j
@@ -49,11 +55,12 @@ noremap   <Left>  <NOP>
 noremap   <Right> <NOP>
 
 " show line numbers
-set number
+" set number
+set relativenumber number
 
 " Better search behavior
 set hlsearch
-set incsearch
+set incsearch "show next match when entering a search
 set ignorecase
 set smartcase
 
@@ -64,17 +71,15 @@ map <Leader><space> :nohl<cr>
 "set scrolloff=5
 
 " This uses Ack.vim to search for the word under the cursor
+" let g:ackprg = 'ag --vimgrep'
 nnoremap <leader><bs> :Ag! '\b<c-r><c-w>\b'<cr>
 
 " NERDTree configuration
-let NERDTreeIgnore=['\~$', 'tmp', '\.git$', '\.bundle', '.DS_Store', 'tags', '.swp']
+let NERDTreeIgnore=['\~$', 'tmp', '\.git$', '\.bundle', '.DS_Store', '.swp', '\.happypack', 'flow-typed']
 let NERDTreeShowHidden=1
 let g:NERDTreeDirArrows=0
 map <Leader>n :NERDTreeToggle<CR>
 map <Leader>fnt :NERDTreeFind<CR>
-
-" BufExplorer
-noremap <leader>bb :BufExplorer<CR>
 
 " split windows
 nnoremap <C-w>- :spl<cr>
@@ -84,16 +89,17 @@ set softtabstop=2 shiftwidth=2 expandtab
 
 colorscheme Tomorrow-Night-Eighties
 
-" ctrlp.vim config
-if get(g:, 'loaded_ctrlp', 1)
-  let g:ctrlp_by_filename = 1
-  let g:ctrlp_match_window_reversed = 0
-  let g:ctrlp_working_path_mode = 'a'
-  let g:ctrlp_max_height = 20
-  let g:ctrlp_match_window_bottom = 0
-  let g:ctrlp_switch_buffer = 0
-  let g:ctrlp_custom_ignore = '\v(\.DS_Store|\.sass-cache|\.scssc|tmp|\.bundle|\.git|node_modules|vendor|bower_components|deps|_build)$'
-endif
+" command-t config
+map <C-c> :CommandT<CR>
+map <C-b> :CommandTBuffer<CR>
+map <C-f> :CommandTFlush<CR>
+let g:CommandTTraverseSCM="pwd"
+let g:CommandTFileScanner="git"
+let g:CommandTAlwaysShowDotFiles=1
+let g:CommandTMatchWindowAtTop=1
+let g:CommandTMatchWindowReverse=0
+let g:CommandTWildIgnore=&wildignore . ",node_modules/**,**/node_modules/**,dist/**,lib/**,coverage/**,packages/**/lib/**,**/node_modules,flow-typed/**,.happypack/**"
+let g:CommandTHighlightColor="Search"
 
 " Disable vim backups
 set nobackup
@@ -131,22 +137,50 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsListSnippets="<c-l>"
 
-" vim-jsx-utils
-nnoremap <leader>ja :call JSXEncloseReturn()<CR>
-nnoremap <leader>ji :call JSXEachAttributeInLine()<CR>
-nnoremap <leader>je :call JSXExtractPartialPrompt()<CR>
-nnoremap <leader>jc :call JSXChangeTagPrompt()<CR>
-nnoremap vat :call JSXSelectTag()<CR>
+function! s:Pulse()
+  setlocal cursorline
+  redraw
+  sleep 100m
 
-command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
-function! QuickfixFilenames()
-  " Building a hash ensures we get each buffer only once
-  let buffer_numbers = {}
-  for quickfix_item in getqflist()
-    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
-  endfor
-  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+  setlocal nocursorline
+  redraw
+  sleep 100m
+
+  setlocal cursorline
+  redraw
+  sleep 100m
+
+  setlocal nocursorline
+  redraw
 endfunction
+autocmd FocusGained * call s:Pulse()
+
+" hardmode
+let g:hardtime_default_on = 0
+let g:hardtime_ignore_quickfix = 1
+let g:hardtime_showmsg = 1
+let g:list_of_normal_keys = ["h", "j", "k", "l"]
+let g:list_of_visual_keys = ["h", "k", "l"]
+let g:hardtime_ignore_buffer_patterns = [ "NERD.*", "*.txt", ".vimrc", '.git/index', '.git/COMMIT_EDITMSG' ]
+
+" eslint
+" let g:syntastic_javascript_checkers = ['eslint', 'flow']
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_aggregate_errors = 1
+let g:flow#enable = 0
+
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+" let g:validator_filetype_map = {"javascript.jsx": "javascript"}
+" let g:validator_javascript_checkers = ['eslint']
+" let g:validator_error_msg_format = "[ ● %d/%d issues ]"
+" let g:validator_auto_open_quickfix = 1
 
 autocmd BufNewFile,BufRead *.scss             set ft=scss.css
 

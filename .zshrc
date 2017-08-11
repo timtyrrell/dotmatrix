@@ -40,7 +40,7 @@ bindkey -M vicmd '^r' history-incremental-search-backward
 bindkey -M viins '^r' history-incremental-search-backward
 
 # options
-setopt appendhistory extendedglob histignoredups nonomatch prompt_subst interactivecomments
+setopt appendhistory extendedglob histignoredups nonomatch prompt_subst interactivecomments share_history
 
 # Bindings
 # external editor support
@@ -85,8 +85,8 @@ RPROMPT="%(?..{%{$fg[red]%}%?%{$reset_color%}})"
 
 # history
 HISTFILE=~/.zsh_history
-HISTSIZE=5000
-SAVEHIST=10000
+HISTSIZE=10000000
+SAVEHIST=10000000
 setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
 
@@ -105,7 +105,6 @@ alias vim='mvim -v'
 alias rd='rmdir'
 alias cd..='cd ..'
 alias ..='cd ..'
-alias groutes='rake routes | grep $@'
 
 alias tmn='tmux new -s'
 alias tma='tmux attach -t'
@@ -116,13 +115,6 @@ cdpath=(~ ~/src $DEV_DIR $HASHROCKET_DIR)
 # rvm-install added line:
 if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then source "$HOME/.rvm/scripts/rvm" ; fi
 
-cuke() {
-  local file="$1"
-  shift
-  cucumber "features/$(basename $file)" $@
-}
-compctl -g '*.feature' -W features cuke
-
 # import local zsh customizations, if present
 zrcl="$HOME/.zshrc.local"
 [[ ! -a $zrcl ]] || source $zrcl
@@ -132,3 +124,33 @@ typeset -aU path
 
 export NVM_DIR="/Users/timothytyrrell/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
+export PATH="$PATH:`yarn global bin`"
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/timothytyrrell/Downloads/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/Users/timothytyrrell/Downloads/google-cloud-sdk/completion.zsh.inc'
