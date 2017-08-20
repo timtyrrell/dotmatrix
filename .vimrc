@@ -27,8 +27,8 @@ set shell=/bin/bash
 " yank until end of line
 nnoremap Y y$
 
-" don't overwrite bugger on paste
-xnoremap p "_dP
+" don't overwrite buffer on paste
+" xnoremap p "_dP
 
 " simplify split navigation
 map <C-j> <C-W>j
@@ -55,8 +55,8 @@ noremap   <Left>  <NOP>
 noremap   <Right> <NOP>
 
 " show line numbers
-" set number
-set relativenumber number
+set number
+" set relativenumber number
 
 " Better search behavior
 set hlsearch
