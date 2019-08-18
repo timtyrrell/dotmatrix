@@ -42,10 +42,13 @@
 	name = bundle
 	driver = bundle
 [push]
-	default = tracking
+	default = upstream
 	followTags = true
 [rebase]
 	autosquash = true
+[rerere]
+        enabled = true
+        autoupdate = true
 [diff]
 	algorithm = patience
 	compactionHeuristic = true

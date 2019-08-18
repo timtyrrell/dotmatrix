@@ -8,6 +8,7 @@ jgdavey/tslime.vim
 jgdavey/vim-blockle
 jgdavey/vim-turbux
 jgdavey/vim-weefactor
+kchmck/vim-coffee-script
 leshill/vim-json
 mxw/vim-jsx
 pangloss/vim-javascript
@@ -51,8 +52,9 @@ Raimondi/delimitMate
 SirVer/ultisnips
 Olical/vim-enmasse
 markwu/ZoomWin
+wesQ3/vim-windowswap
 wincent/command-t
 wincent/ferret
-wesQ3/vim-windowswap
 moll/vim-node
 jcorbin/vim-searchmatch
+leafgarland/typescript-vim

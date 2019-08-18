@@ -1,6 +1,10 @@
+# zsh perf check
+# zmodload zsh/zprof
+export NVM_LAZY_LOAD=true
+# export NVM_AUTO_USE=true
+
 fpath=(
   $fpath
-  ~/.rvm/scripts/zsh/Completion
   ~/.zsh/functions
   ~/.zsh/completion
   /usr/local/share/zsh/site-functions
@@ -113,7 +117,7 @@ alias tma='tmux attach -t'
 cdpath=(~ ~/src $DEV_DIR $HASHROCKET_DIR)
 
 # rvm-install added line:
-if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then source "$HOME/.rvm/scripts/rvm" ; fi
+# if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then source "$HOME/.rvm/scripts/rvm" ; fi
 
 # import local zsh customizations, if present
 zrcl="$HOME/.zshrc.local"
@@ -148,9 +152,3 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
 export PATH="$PATH:`yarn global bin`"
-
-# The next line updates PATH for the Google Cloud SDK.
-source '/Users/timothytyrrell/Downloads/google-cloud-sdk/path.zsh.inc'
-
-# The next line enables shell command completion for gcloud.
-source '/Users/timothytyrrell/Downloads/google-cloud-sdk/completion.zsh.inc'
