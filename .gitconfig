@@ -21,6 +21,7 @@
 	pushf = push --force-with-lease
 	append = commit --amend -CHEAD
 	pnb = push -u origin HEAD
+	lart = for-each-ref --sort=committerdate refs/heads/ --format='%(committerdate:short) %(refname:short)'
 [branch]
 	autosetuprebase = always
 [color]
